@@ -10,6 +10,7 @@ import tc.oc.tracker.Trackers;
 import tc.oc.tracker.damage.resolvers.AnvilDamageResolver;
 import tc.oc.tracker.damage.resolvers.BlockDamageResolver;
 import tc.oc.tracker.damage.resolvers.DispensedProjectileDamageResolver;
+import tc.oc.tracker.damage.resolvers.ExplosionDamageResolver;
 import tc.oc.tracker.damage.resolvers.FallDamageResolver;
 import tc.oc.tracker.damage.resolvers.GravityDamageResolver;
 import tc.oc.tracker.damage.resolvers.LavaDamageResolver;
@@ -111,6 +112,7 @@ public class TrackerPlugin extends JavaPlugin {
         new DispensedProjectileDamageResolver(projectileDistanceTracker, dispenserTracker));
     drm.register(new OwnedMobDamageResolver(ownedMobTracker));
     drm.register(new AnvilDamageResolver(anvilTracker));
+    drm.register(new ExplosionDamageResolver());
 
     // debug
     // this.registerEvents(new DebugListener());
