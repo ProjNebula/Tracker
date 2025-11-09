@@ -3,6 +3,8 @@ package tc.oc.tracker.damage.resolvers;
 import com.google.common.base.Preconditions;
 import javax.annotation.Nonnull;
 import javax.annotation.Nullable;
+
+import org.bukkit.Bukkit;
 import org.bukkit.entity.LivingEntity;
 import org.bukkit.entity.Player;
 import org.bukkit.event.entity.EntityDamageEvent;
@@ -34,7 +36,7 @@ public class GravityDamageResolver implements DamageResolver {
     Player victim = (Player) entity;
     Fall fall = this.tracker.getCausingFall(victim, damageEvent.getCause());
     if (fall != null) {
-      return new GravityDamageInfo(fall.attacker, fall.cause, fall.from, fall.whereOnGround);
+      return new GravityDamageInfo(fall.attacker, fall.cause, fall.from, fall.whereOnGround, damageEvent.getCause());
     } else {
       return null;
     }

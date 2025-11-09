@@ -20,15 +20,20 @@ public class GravityDamageInfo extends AbstractDamageInfo {
   private final
   @Nullable
   Location fallLocation;
+  private final
+  @Nonnull
+  DamageCause damageCause;
 
   public GravityDamageInfo(@Nullable LivingEntity resolvedDamager, @Nonnull Fall.Cause cause,
-      @Nonnull Fall.From from, @Nonnull Location fallLocation) {
+      @Nonnull Fall.From from, @Nonnull Location fallLocation, @Nonnull DamageCause damageCause) {
     super(resolvedDamager);
 
+    Preconditions.checkNotNull(damageCause, "damageCause");
     Preconditions.checkNotNull(resolvedDamager, "damager");
     Preconditions.checkNotNull(cause, "cause");
     Preconditions.checkNotNull(from, "from");
 
+    this.damageCause = damageCause;
     this.cause = cause;
     this.from = from;
     this.fallLocation = fallLocation;
@@ -64,6 +69,6 @@ public class GravityDamageInfo extends AbstractDamageInfo {
   public
   @Nonnull
   DamageCause getDamageCause() {
-    return DamageCause.FALL;
+    return damageCause;
   }
 }
